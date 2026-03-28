@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Effectuer Virement</h2>
+
+  <form (ngSubmit)="onSubmit()">
+
+   
+
+    <div class="row mb-3">
+      <div class="col">
+        <label>Compte Source</label>
+         <input type="text" class="form-control"   name="compteSource" [(ngModel)]="compteSource" readonly/>
+      </div>
+
+      <div class="col">
+        <label>Compte Destinataire</label>
+        <input type="text" class="form-control" [(ngModel)]="compteDest" name="compteDest" required>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <label>Montant</label>
+        <input type="number" class="form-control" [(ngModel)]="montant" name="montant" placeholder="Entrer le montant" required>
+      </div>
+
+      <div class="col">
+        <label>Date</label>
+       <input type="date" class="form-control" [(ngModel)]="date" name="date" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Description</label>
+      <input type="text" class="form-control" [(ngModel)]="description" name="description" placeholder="Description (optionnelle)">
+    </div>
+
+    <button type="submit" class="btn btn-danger w-100">Effectuer Virement</button>
+  </form>
+</div>
+
+
+ 

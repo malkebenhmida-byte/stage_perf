@@ -1,0 +1,26 @@
+<div class="card">
+  <h2>Retirer Montant</h2>
+<hr class="separator">
+  <form (ngSubmit)="onSubmit()">
+    
+    <!-- Compte -->
+    <div class="form-group">
+  <label>Compte</label>
+  <input type="text" [value]="compte" readonly/>
+</div>
+
+    <!-- Montant -->
+    <div class="form-group">
+      <label>Montant</label>
+      <input 
+        type="number" 
+        placeholder="Entrer le montant"
+        [(ngModel)]="montant"
+        name="montant"
+      />
+    </div>
+
+    <!-- Button -->
+    <button type="submit">Retirer Montant</button>
+  </form>
+</div>

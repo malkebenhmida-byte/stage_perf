@@ -1,0 +1,86 @@
+<app-navbar></app-navbar>
+<div class="table-container">
+  <div class="table-controls">
+    <div>
+      <label>
+        <select (change)="onPageSizeChange($event)">
+          <option>10</option>
+          <option>25</option>
+          <option>50</option>
+        </select>
+        Clients par page
+      </label>
+    </div>
+
+    <div>
+      <strong>Rechercher un client :</strong>
+      <input type="text" placeholder="ID du client" [(ngModel)]="searchId">
+      <button (click)="searchClient()">Rechercher</button>
+    </div>
+  </div>
+
+ 
+   <div class="table-wrapper">
+  <table class="client-table">
+    <thead>
+      <tr>
+        <th>Identifiant</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date Naissance</th>
+        <th>Genre</th>
+        <th>Adresse</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+     <tr *ngFor="let c of pagedClients">
+        <td>{{ c.identifiant }}</td>
+        <td>{{ c.nom }}</td>
+        <td>{{ c.prenom }}</td>
+        <td>{{ c.date_naiss }}</td>
+        <td>{{ c.genre }}</td>
+        <td>{{ c.adresse }}</td>
+        <td>{{ c.adresse_mail }}</td>
+        <td>{{ c.num_tel }}</td>
+        <td class="actions">
+          <button class="btn-edit" [routerLink]="['/client-modif', c.identifiant]">Modifier</button>
+
+  <button class="btn-delete" (click)="deleteClient(c.identifiant)">Supprimer</button>
+  &nbsp;
+    <button class="btn-consulter" [routerLink]="['/compte', c.identifiant]">Consulter Compte</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+ 
+  <div class="table-controls" style="margin-top: 10px;">
+    <div>
+     Affichage de {{ pagedClients.length }} sur {{ totalClients }} Clients
+    </div>
+
+    <div class="pagination">
+
+  <!-- bouton précédent -->
+  <button (click)="goToPage(currentPage - 1)">&laquo;</button>
+
+  <!-- pages dynamiques -->
+  <button
+    *ngFor="let p of [].constructor(getTotalPages()); let i = index"
+    [class.active]="currentPage === i + 1"
+    (click)="goToPage(i + 1)">
+    {{ i + 1 }}
+  </button>
+
+  <!-- bouton suivant -->
+  <button (click)="goToPage(currentPage + 1)">&raquo;</button>
+
+</div>
+  </div>
+
+</div> 

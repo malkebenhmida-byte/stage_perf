@@ -1,0 +1,42 @@
+<div class="form-container">
+  <h2>Résultat de la recherche</h2>
+<div class="table-container">
+  <table *ngIf="client" class="client-table">
+    <tr>
+      <th>IDENTIFIANT</th>
+      <th>NOM</th>
+      <th>PRÉNOM</th>
+      <th>DATE NAISSANCE</th>
+      <th>GENRE</th>
+      <th>ADRESSE</th>
+      <th>EMAIL</th>
+      <th>TÉLÉPHONE</th>
+      <th>ACTION</th>
+    </tr>
+    <tr>
+      <td>{{ client.identifiant }}</td>
+      <td>{{ client.nom }}</td>
+      <td>{{ client.prenom }}</td>
+      <td>{{ client.date_naiss }}</td>
+      <td>{{ client.genre }}</td>
+      <td>{{ client.adresse }}</td>
+      <td>{{ client.adresse_mail }}</td>
+      <td>{{ client.num_tel }}</td>
+      <td>
+        <button class="btn-edit" [routerLink]="['/client-modif', client.identifiant]">Modifier</button>
+        <button class="btn-delete" (click)="deleteClient(client.identifiant)">Supprimer</button>
+      </td>
+    </tr>
+  </table>
+</div>
+  <div *ngIf="!client">
+    <p>Aucun client trouvé.</p>
+  </div> 
+  <div style="margin-bottom: 15px;">
+  <button class="btn-back" (click)="goBack()">
+     Retour à la liste des clients
+  </button>
+</div>
+
+</div>
+

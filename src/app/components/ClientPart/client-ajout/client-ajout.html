@@ -1,0 +1,40 @@
+
+<div class="form-container">
+  <h2>Ajouter Client</h2>
+
+  <form [formGroup]="clientForm" (ngSubmit)="submit()">
+
+     <label>Identifiant</label>
+    <input type="text" formControlName="identifiant">
+
+    <label>Nom</label>
+    <input type="text" formControlName="nom">
+
+    <label>Prénom</label>
+    <input type="text" formControlName="prenom">
+
+    <label>Date de naissance</label>
+    <input type="date" formControlName="date_naiss">
+
+    <label>Genre</label>
+    <select formControlName="genre">
+      <option value="">-- Choisir --</option>
+      <option value="masculin">Homme</option>
+      <option value="feminin">Femme</option>
+    </select>
+
+    <label>Adresse</label>
+    <input type="text" formControlName="adresse">
+
+    <label>Email</label>
+    <input type="email" formControlName="adresse_mail">
+
+    <label>Téléphone</label>
+    <input type="text" formControlName="num_tel">
+
+    <button type="submit" [disabled]="clientForm.invalid">
+      Ajouter
+    </button>
+
+  </form>
+</div>

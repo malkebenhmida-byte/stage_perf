@@ -1,0 +1,42 @@
+.container {
+  max-width: 600px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #8B1E3F;
+}
+.btn-retour {
+  margin-top: 20px;
+  padding: 7px 20px;
+  background-color: #8B1E3F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 400px;
+}
+label {
+  font-weight: bold;
+}
+
+.btn-danger {
+  background-color: #8B1E3F;
+  border: none;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.mb-3 {
+  margin-bottom: 15px;
+}

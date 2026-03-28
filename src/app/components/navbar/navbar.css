@@ -1,0 +1,45 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #800000; /* bordeaux */
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px; /* taille du logo */
+  margin-right: 10px;
+}
+.navbar-title {
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar button {
+  font-weight: bold;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logout-btn {
+  background-color: #555; /* gris foncé */
+  color: white;
+}
+
+.add-btn {
+  background-color: #ccc; /* gris clair */
+  color: black;
+}

@@ -1,0 +1,32 @@
+<div class="container mt-4">
+
+  <button class="btn btn-danger mb-3" routerLink="/clients">
+    ← Retour
+  </button>
+  
+
+
+  <div *ngFor="let compte of comptes" class="card shadow p-4 mb-4">
+    <h3 class="h3">Détail du Compte {{ compte.numero }}</h3>
+    <p><strong>Numéro de Compte:</strong> {{ compte.numeroCompte }}</p>
+    <hr class="separator">
+    <p><strong>Type de Compte:</strong> {{ compte.typeCompte }}</p>
+    <hr class="separator">
+    <p><strong>Solde Actuel:</strong> {{ compte.solde }} TND</p>
+    <hr class="separator">
+    <p><strong>Statut:</strong> {{ compte.statut }}</p>
+    <hr class="separator">
+    <p><strong>Date de Création:</strong> {{ compte.dateCreation }}</p>
+    <hr class="separator">
+    <p><strong>Propriétaire:</strong> {{ compte.proprietaireNom }}</p>
+    <hr class="separator">
+    <div class="mt-3">
+      <button class="btn btn-danger me-2" [routerLink]="['/deposer' , compte.numeroCompte]"  [disabled]="compte.statut === 'SUSPENDU'">←Déposer</button>
+      <button class="btn btn-danger me-2"[routerLink]="['/retirer' , compte.numeroCompte]"  [disabled]="compte.statut === 'SUSPENDU'">←Retirer</button>
+      <button class="btn btn-danger me-2" [routerLink]="['/virement' , compte.numeroCompte]"  [disabled]="compte.statut === 'SUSPENDU'">Effectuer Virement</button>
+      <button class="btn btn-dark" [routerLink]="['/transactions' , compte.numeroCompte]">Voir Transactions</button>
+    </div>
+
+  </div>
+
+</div>

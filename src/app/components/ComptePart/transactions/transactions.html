@@ -1,0 +1,138 @@
+<!--
+<div class="transactions-container">
+  <h2>Transactions du Compte: {{ compteNumero }}</h2>
+
+  <div class="filter-bar">
+    <label for="type">Type de Transaction:</label>
+    <select id="type" [(ngModel)]="typeFiltre">
+      <option value="">Sélectionner...</option>
+      <option value="Dépôt">Dépôt</option>
+      <option value="Retrait">Retrait</option>
+      <option value="Virement envoyé">Virement Envoyé</option>
+      <option value="Virement reçu">Virement Reçu</option>
+    </select>
+    <button (click)="filtrerTransactions()">Rechercher</button>
+  </div>
+<div class="table-wrapper">
+
+  <table class="transactions-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Type de Transaction</th>
+        <th>Montant</th>
+        <th>Description</th>
+        <th>Solde Après Opération</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of pagedTransactions">
+        <td>{{ t.date | date:'dd/MM/yyyy' }}</td>
+        <td>{{ t.type }}</td>
+        <td [ngClass]="{
+  'credit': t.type === 'Dépôt' || t.type === 'Virement reçu',
+  'debit': t.type === 'Retrait' || t.type === 'Virement envoyé'
+}">
+  {{ (t.type === 'Dépôt' || t.type === 'Virement reçu') ? '+' : '-' }}
+  {{ t.montant | number:'1.0-2' }} TND
+</td>
+        <td>{{ t.description }}</td>
+        <td>{{ t.soldeApres | number:'1.0-2' }} TND</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <button class="btn-retour" (click)="retour()">← Retour</button>
+  <div>
+    Affichage de {{ pagedTransactions.length }} sur {{ totalTransactions }} Transactions
+  </div>
+
+  <div class="table-controls ">
+  <div class="pagination">
+    <button (click)="goToPage(currentPage - 1)">&laquo;</button>
+
+    <button
+      *ngFor="let p of [].constructor(getTotalPages()); let i = index"
+      [class.active]="currentPage === i + 1"
+      (click)="goToPage(i + 1)">
+      {{ i + 1 }}
+    </button>
+
+    <button (click)="goToPage(currentPage + 1)">&raquo;</button>
+  </div>
+
+</div>
+-->
+<div class="transactions-container">
+  <h2>Transactions du Compte: {{ compteNumero }}</h2>
+
+  <!-- FILTRE -->
+  <div class="filter-bar">
+    <label for="type">Type de Transaction:</label>
+    <select id="type" [(ngModel)]="typeFiltre">
+      <option value="">Sélectionner...</option>
+      <option value="Dépôt">Dépôt</option>
+      <option value="Retrait">Retrait</option>
+      <option value="Virement envoyé">Virement Envoyé</option>
+      <option value="Virement reçu">Virement Reçu</option>
+    </select>
+    <button (click)="filtrerTransactions()">Rechercher</button>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrapper">
+    <table class="transactions-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type de Transaction</th>
+          <th>Montant</th>
+          <th>Description</th>
+          <th>Solde Après Opération</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let t of pagedTransactions">
+          <td>{{ t.date | date:'dd/MM/yyyy' }}</td>
+          <td>{{ t.type }}</td>
+
+          <td [ngClass]="{
+            'credit': t.type === 'Dépôt' || t.type === 'Virement reçu',
+            'debit': t.type === 'Retrait' || t.type === 'Virement envoyé'
+          }">
+            {{ (t.type === 'Dépôt' || t.type === 'Virement reçu') ? '+' : '-' }}
+            {{ t.montant | number:'1.0-2' }} TND
+          </td>
+
+          <td>{{ t.description }}</td>
+          <td>{{ t.soldeApres | number:'1.0-2' }} TND</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BOUTON RETOUR -->
+  <button class="btn-retour" (click)="retour()">← Retour</button>
+
+  <!-- PAGINATION + INFO -->
+  <div class="pagination-bottom">
+    <div class="info">
+      Affichage de {{ pagedTransactions.length }} sur {{ totalTransactions }} Transactions
+    </div>
+
+    <div class="pagination">
+      <button (click)="goToPage(currentPage - 1)">&laquo;</button>
+
+      <button
+        *ngFor="let p of [].constructor(getTotalPages()); let i = index"
+        [class.active]="currentPage === i + 1"
+        (click)="goToPage(i + 1)">
+        {{ i + 1 }}
+      </button>
+
+      <button (click)="goToPage(currentPage + 1)">&raquo;</button>
+    </div>
+  </div>
+</div>
+
